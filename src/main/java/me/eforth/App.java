@@ -14,19 +14,10 @@ import javafx.stage.Stage;
 public class App extends Application {
 
     @Override
-    public void start(Stage stage) {
-
+    public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main.fxml"));
-
-        VBox root = null;
-        try {
-            root = (VBox) fxmlLoader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        Scene scene = new Scene(root, 600, 400);
-
+        VBox root = fxmlLoader.load();
+        Scene scene = new Scene(root, 700, 400);
         stage.setScene(scene);
         stage.show();
     }
@@ -34,5 +25,4 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
-
 }
