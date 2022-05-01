@@ -85,5 +85,28 @@ public class MainController implements Initializable {
                 }
             }
         });
+
+        // table view selection listener
+        // https://www.demo2s.com/java/javafx-tableview-creating-and-working-with-tables.html
+        // when a row is selected set the selected book in the BookDialogController by calling setBook(Book book).
+    }
+
+    public void onEdit(ActionEvent actionEvent) throws IOException {
+        // Create dialog
+        Dialog<String> dialog = new Dialog<>();
+        // Create an FXML loader that points to the FXML file
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/book-dialog.fxml"));
+        // Load FXML file as a JavaFX control
+        HBox root = fxmlLoader.load();
+        // Get an instance of the BookDialogController
+        BookDialogController controller = fxmlLoader.getController();
+        // Set the observable list in the dialog
+        controller.setMainObservableList(bookObservableList);
+        // Set the title of the dialog
+        dialog.setTitle("Edit Book");
+        // Add HBox to dialog content
+        dialog.getDialogPane().setContent(root);
+        // Show the dialog
+        dialog.showAndWait();
     }
 }

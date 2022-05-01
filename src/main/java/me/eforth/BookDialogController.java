@@ -24,6 +24,8 @@ public class BookDialogController {
 
     private ObservableList<Book> mainObservableList;
 
+    private Book selectedBook;
+
     @FXML
     public void onSave(MouseEvent mouseEvent) {
         Book book = getBook();
@@ -55,7 +57,17 @@ public class BookDialogController {
         return new Book(isbn, title, edition, categories, author, publisher);
     }
 
+    private void setFields() {
+        if (selectedBook != null) {
+            // set the text of each textfield to the appropriate content. For e.g. titleField.setText(selectedBook.getTitle);
+        }
+    }
+
     public void setMainObservableList(ObservableList<Book> mainObservableList) {
         this.mainObservableList = mainObservableList;
+    }
+
+    public void setBook(Book book) {
+        this.selectedBook = book;
     }
 }
